@@ -24,7 +24,7 @@ namespace GUI_Hotel
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<ApplicationDbContext>(options =>
-                options.UseSqlServer("server=[::1],1433; User Id=sa; Password=password_123; database=GuiHotelDb; trusted_connection=false;"));
+                options.UseSqlServer("server=localhost,1433; User Id=sa; Password=password_123; database=GuiHotelDb; trusted_connection=false;"));
             services.AddDatabaseDeveloperPageExceptionFilter();
 
             services.AddDefaultIdentity<IdentityUser>(options => {
@@ -87,15 +87,15 @@ namespace GUI_Hotel
 
             app.UseAuthentication();
             app.UseAuthorization();
-            
+           
             if (userManager.FindByNameAsync("Kitchen@HotelHost").Result == null ||
                 userManager.FindByNameAsync("Reception@HotelHost").Result == null ||
                 userManager.FindByNameAsync("Restaurant@HotelHost").Result == null)
             {
                 DbEmployee.CreateKitchenEmployee(userManager, log);
-                Thread.Sleep(200);
+                Thread.Sleep(2000);
                 DbEmployee.CreateReceptionEmployee(userManager, log);
-                Thread.Sleep(200);
+                Thread.Sleep(2000);
                 DbEmployee.CreateRestaurantEmployee(userManager, log);
             }
             

@@ -1,4 +1,5 @@
 ﻿using GUI_Hotel.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
@@ -24,6 +25,24 @@ namespace GUI_Hotel.Controllers
         }
 
         public IActionResult Privacy()
+        {
+            return View();
+        }
+        [Authorize(Policy = "IsKitchen")]
+
+        public IActionResult Kitchen()
+        {
+            return View();
+        }
+
+        [Authorize(Policy = "IsReception")]
+        public IActionResult Reception()
+        {
+            return View();
+        }
+
+        [Authorize(Policy = "IsRestaurant")]
+        public IActionResult Restaurant()
         {
             return View();
         }
