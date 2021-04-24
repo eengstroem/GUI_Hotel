@@ -17,7 +17,7 @@ namespace GUI_Hotel.Models.DataModels
 
         [Required]
         [DataType(DataType.Date)]
-        public DateTime BookingDate { get; set; }
+        public DateTime? BookingDate { get; set; }
 
         public int RoomNumber { get; set; }
 
