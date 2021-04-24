@@ -21,14 +21,14 @@ namespace GUI_Hotel.Controllers
         }
 
         // GET: Kitchen
-        [Authorize(Policy = "IsReception")]
+        [Authorize(Policy = "IsKitchen")]
         public async Task<IActionResult> Index()
         {
             return View(await _context.Bookings.ToListAsync());
         }
 
         // GET: Kitchen/Details/5
-        [Authorize(Policy = "IsReception")]
+        [Authorize(Policy = "IsKitchen")]
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -47,7 +47,7 @@ namespace GUI_Hotel.Controllers
         }
 
         // GET: Kitchen/Create
-        [Authorize(Policy = "IsReception")]
+        [Authorize(Policy = "IsKitchen")]
         public IActionResult Create()
         {
             return View();
@@ -58,7 +58,7 @@ namespace GUI_Hotel.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [Authorize(Policy = "IsReception")]
+        [Authorize(Policy = "IsKitchen")]
         public async Task<IActionResult> Create([Bind("BookingId,BookingDate,RoomNumber,AdultsBooked,AdultsCheckedIn,ChildrenBooked,ChildrenCheckedIn")] Booking booking)
         {
             if (ModelState.IsValid)
@@ -71,7 +71,7 @@ namespace GUI_Hotel.Controllers
         }
 
         // GET: Kitchen/Edit/5
-        [Authorize(Policy = "IsReception")]
+        [Authorize(Policy = "IsKitchen")]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -92,7 +92,7 @@ namespace GUI_Hotel.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [Authorize(Policy = "IsReception")]
+        [Authorize(Policy = "IsKitchen")]
         public async Task<IActionResult> Edit(int id, [Bind("BookingId,BookingDate,RoomNumber,AdultsBooked,AdultsCheckedIn,ChildrenBooked,ChildrenCheckedIn")] Booking booking)
         {
             if (id != booking.BookingId)
@@ -124,7 +124,7 @@ namespace GUI_Hotel.Controllers
         }
 
         // GET: Kitchen/Delete/5
-        [Authorize(Policy = "IsReception")]
+        [Authorize(Policy = "IsKitchen")]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -145,7 +145,7 @@ namespace GUI_Hotel.Controllers
         // POST: Kitchen/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        [Authorize(Policy = "IsReception")]
+        [Authorize(Policy = "IsKitchen")]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var booking = await _context.Bookings.FindAsync(id);

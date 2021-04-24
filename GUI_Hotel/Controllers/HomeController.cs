@@ -33,7 +33,6 @@ namespace GUI_Hotel.Controllers
         {
             return View();
         }
-        [Authorize(Policy = "IsKitchen")]
 
         public IActionResult Kitchen()
         {
