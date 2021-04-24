@@ -9,9 +9,10 @@ namespace GUI_Hotel.Data
 {
     public class DbEmployee
     {
-        public static List<string> emails = new List<string> { "Kitchen@HotelHost", "Reception@HotelHost", "Restaurant@HotelHost" };
-        public static List<string> passwords = new List<string> { "Kitchen123/", "Reception123/", "Restaurant123/" };
-        public static List<Tuple<string, string>> claims = new List<Tuple<string, string>> { new("Kitchen", "KITCHEN"), new("Reception", "RECEPTION"), new("Restaurant", "RESTAURANT") };
+        private static readonly List<string> emails = new() { "Kitchen@HotelHost", "Reception@HotelHost", "Restaurant@HotelHost" };
+        private static readonly List<string> passwords = new() { "Kitchen123/", "Reception123/", "Restaurant123/" };
+        private static readonly List<Tuple<string, string>> claims = new() { new("Kitchen", "KITCHEN"), new("Reception", "RECEPTION"), new("Restaurant", "RESTAURANT") };
+        
 
         public static void CreateKitchenEmployee(UserManager<IdentityUser> userManager, ILogger log)
         {

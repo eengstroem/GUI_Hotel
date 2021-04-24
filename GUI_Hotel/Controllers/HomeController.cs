@@ -1,6 +1,8 @@
-﻿using GUI_Hotel.Models;
+﻿using GUI_Hotel.Data.DataDbContext;
+using GUI_Hotel.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
@@ -13,10 +15,12 @@ namespace GUI_Hotel.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
+        private readonly DataDbContext Context;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ILogger<HomeController> logger, DataDbContext context)
         {
             _logger = logger;
+            Context = context;
         }
 
         public IActionResult Index()
@@ -31,12 +35,6 @@ namespace GUI_Hotel.Controllers
         [Authorize(Policy = "IsKitchen")]
 
         public IActionResult Kitchen()
-        {
-            return View();
-        }
-
-        [Authorize(Policy = "IsReception")]
-        public IActionResult Reception()
         {
             return View();
         }

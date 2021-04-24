@@ -1,4 +1,5 @@
 using GUI_Hotel.Data;
+using GUI_Hotel.Data.DataDbContext;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
@@ -24,8 +25,10 @@ namespace GUI_Hotel
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<ApplicationDbContext>(options =>
-                options.UseSqlServer("server=localhost,1433; User Id=sa; Password=password_123; database=GuiHotelDb; trusted_connection=false;"));
+                options.UseSqlServer("server=[::1],1433; User Id=sa; Password=password_123; database=GuiHotelIdentityDb; trusted_connection=false;"));
             services.AddDatabaseDeveloperPageExceptionFilter();
+            services.AddDbContext<DataDbContext>(options =>
+                options.UseSqlServer("server=[::1],1433; User Id=sa; Password=password_123; database=GuiHotelDataDb; trusted_connection=false;"));
 
             services.AddDefaultIdentity<IdentityUser>(options => {
                 options.SignIn.RequireConfirmedAccount = false;
@@ -82,7 +85,7 @@ namespace GUI_Hotel
             }
             app.UseHttpsRedirection();
             app.UseStaticFiles();
-
+            
             app.UseRouting();
 
             app.UseAuthentication();
