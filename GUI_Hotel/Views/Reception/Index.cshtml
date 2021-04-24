@@ -25,11 +25,20 @@
                 @Html.DisplayFor(modelItem => item.BookingDate)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.BookingId">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.BookingId">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.BookingId">Delete</a>
+                @{
+                    var rooms = item.BookedRooms.ToList();
+                    int TotalAdults = 0;
+                    int TotalChildren = 0;
+                    foreach(var room in rooms)
+                    {
+                        TotalAdults += room.AdultCount;
+                        TotalChildren += room.ChildCount;
+                    }
+                    Html.DisplayFor(ModelItem => TotalAdults);
+                    Html.DisplayFor(ModelItem => TotalChildren);
+                }
             </td>
         </tr>
-}
+                    }
     </tbody>
 </table>
