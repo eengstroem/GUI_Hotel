@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Security.Claims;
 using System.Threading.Tasks;
 
-namespace GUI_Hotel.Data
+namespace GUIHotel.Data
 {
     public class DbEmployee
     {

@@ -1,5 +1,5 @@
-﻿using GUI_Hotel.Data.DataDbContext;
-using GUI_Hotel.Models;
+﻿using GUIHotel.Data;
+using GUIHotel.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -10,14 +10,14 @@ using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace GUI_Hotel.Controllers
+namespace GUIHotel.Controllers
 {
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
-        private readonly DataDbContext Context;
+        private readonly ApplicationDbContext Context;
 
-        public HomeController(ILogger<HomeController> logger, DataDbContext context)
+        public HomeController(ILogger<HomeController> logger, ApplicationDbContext context)
         {
             _logger = logger;
             Context = context;

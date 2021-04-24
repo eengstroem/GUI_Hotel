@@ -5,17 +5,17 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using GUI_Hotel.Data.DataDbContext;
-using GUI_Hotel.Models.DataModels;
+using GUIHotel.Models.DataModels;
 using Microsoft.AspNetCore.Authorization;
+using GUIHotel.Data;
 
-namespace GUI_Hotel.Controllers
+namespace GUIHotel.Controllers
 {
     public class ReceptionController : Controller
     {
-        private readonly DataDbContext _context;
+        private readonly ApplicationDbContext _context;
 
-        public ReceptionController(DataDbContext context)
+        public ReceptionController(ApplicationDbContext context)
         {
             _context = context;
         }
