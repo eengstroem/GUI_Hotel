@@ -24,7 +24,10 @@ namespace GUI_Hotel.Controllers
         [Authorize(Policy = "IsRestaurant")]
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Bookings.ToListAsync());
+          
+            return View(await _context.Bookings.Where(b=>b.BookingDate == DateTime.Today).ToListAsync());
+            //return View(await _context.Bookings.ToListAsync());
+            
         }
 
         // GET: Restaurant/Details/5
