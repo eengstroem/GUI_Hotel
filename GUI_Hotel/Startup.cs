@@ -1,4 +1,4 @@
-using GUIHotel.Data;
+using GUI_Hotel.Data;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
@@ -9,7 +9,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using System.Threading;
 
-namespace GUIHotel
+namespace GUI_Hotel
 {
     public class Startup
     {

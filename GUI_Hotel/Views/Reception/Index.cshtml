@@ -1,4 +1,4 @@
-﻿@model IEnumerable<GUIHotel.Models.DataModels.Booking>
+﻿@model IEnumerable<GUI_Hotel.Models.DataModels.Booking>
 
 @{
     ViewData["Title"] = "Index";
@@ -15,6 +15,21 @@
             <th>
                 @Html.DisplayNameFor(model => model.BookingDate)
             </th>
+            <th>
+                @Html.DisplayNameFor(model => model.RoomNumber)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AdultsBooked)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AdultsCheckedIn)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ChildrenBooked)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ChildrenCheckedIn)
+            </th>
             <th></th>
         </tr>
     </thead>
@@ -25,20 +40,26 @@
                 @Html.DisplayFor(modelItem => item.BookingDate)
             </td>
             <td>
-                @{
-                    var rooms = item.BookedRooms.ToList();
-                    int TotalAdults = 0;
-                    int TotalChildren = 0;
-                    foreach(var room in rooms)
-                    {
-                        TotalAdults += room.AdultCount;
-                        TotalChildren += room.ChildCount;
-                    }
-                    Html.DisplayFor(ModelItem => TotalAdults);
-                    Html.DisplayFor(ModelItem => TotalChildren);
-                }
+                @Html.DisplayFor(modelItem => item.RoomNumber)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AdultsBooked)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AdultsCheckedIn)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ChildrenBooked)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ChildrenCheckedIn)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.BookingId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.BookingId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.BookingId">Delete</a>
             </td>
         </tr>
-                    }
+}
     </tbody>
 </table>

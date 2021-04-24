@@ -1,4 +1,5 @@
-﻿using GUIHotel.Data;
+﻿using GUI_Hotel.Data;
+using GUI_Hotel.Models;
 using GUIHotel.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -10,7 +11,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace GUIHotel.Controllers
+namespace GUI_Hotel.Controllers
 {
     public class HomeController : Controller
     {

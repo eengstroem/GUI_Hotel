@@ -5,11 +5,11 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using GUIHotel.Models.DataModels;
+using GUI_Hotel.Data;
+using GUI_Hotel.Models.DataModels;
 using Microsoft.AspNetCore.Authorization;
-using GUIHotel.Data;
 
-namespace GUIHotel.Controllers
+namespace GUI_Hotel.Controllers
 {
     public class ReceptionController : Controller
     {
@@ -21,7 +21,7 @@ namespace GUIHotel.Controllers
         }
 
         // GET: Reception
-        [Authorize(Policy ="IsReception")]
+        [Authorize(Policy = "IsReception")]
         public async Task<IActionResult> Index()
         {
             return View(await _context.Bookings.ToListAsync());
@@ -59,7 +59,7 @@ namespace GUIHotel.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize(Policy = "IsReception")]
-        public async Task<IActionResult> Create([Bind("BookingId,BookingDate")] Booking booking)
+        public async Task<IActionResult> Create([Bind("BookingId,BookingDate,RoomNumber,AdultsBooked,AdultsCheckedIn,ChildrenBooked,ChildrenCheckedIn")] Booking booking)
         {
             if (ModelState.IsValid)
             {
@@ -93,7 +93,7 @@ namespace GUIHotel.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize(Policy = "IsReception")]
-        public async Task<IActionResult> Edit(int id, [Bind("BookingId,BookingDate")] Booking booking)
+        public async Task<IActionResult> Edit(int id, [Bind("BookingId,BookingDate,RoomNumber,AdultsBooked,AdultsCheckedIn,ChildrenBooked,ChildrenCheckedIn")] Booking booking)
         {
             if (id != booking.BookingId)
             {

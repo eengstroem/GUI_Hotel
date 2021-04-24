@@ -1,11 +1,11 @@
-﻿using GUIHotel.Models.DataModels;
+﻿using GUI_Hotel.Models.DataModels;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace GUIHotel.Data
+namespace GUI_Hotel.Data
 {
     public class ApplicationDbContext : IdentityDbContext
     {
@@ -14,18 +14,14 @@ namespace GUIHotel.Data
         {   
 
         }
-        public DbSet<Room> Rooms { get; set; }
+        
         public DbSet<Booking> Bookings { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
 
-            modelBuilder.Entity<Booking>()
-                .HasMany(c => c.BookedRooms)
-                .WithOne(f => f.Booking)
-                .IsRequired(false)
-                .OnDelete(DeleteBehavior.NoAction);
+           
         }
     }
 }

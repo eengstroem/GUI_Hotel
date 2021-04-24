@@ -5,14 +5,14 @@ using System.Collections.Generic;
 using System.Security.Claims;
 using System.Threading.Tasks;
 
-namespace GUIHotel.Data
+namespace GUI_Hotel.Data
 {
     public class DbEmployee
     {
         private static readonly List<string> emails = new() { "Kitchen@HotelHost", "Reception@HotelHost", "Restaurant@HotelHost" };
         private static readonly List<string> passwords = new() { "Kitchen123/", "Reception123/", "Restaurant123/" };
         private static readonly List<Tuple<string, string>> claims = new() { new("Kitchen", "KITCHEN"), new("Reception", "RECEPTION"), new("Restaurant", "RESTAURANT") };
-        
+
 
         public static void CreateKitchenEmployee(UserManager<IdentityUser> userManager, ILogger log)
         {
@@ -36,7 +36,7 @@ namespace GUIHotel.Data
             }
 
         }
-        
+
         public static void CreateReceptionEmployee(UserManager<IdentityUser> userManager, ILogger log)
         {
 
