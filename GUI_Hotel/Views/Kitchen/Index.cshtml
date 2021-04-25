@@ -55,9 +55,9 @@
                 @Html.DisplayFor(modelItem => item.ChildrenCheckedIn)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.BookingId">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.BookingId">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.BookingId">Delete</a>
+                <a class="data-btn" asp-action="Edit" asp-route-id="@item.BookingId">Edit</a> |
+                <a class="data-btn" asp-action="Details" asp-route-id="@item.BookingId">Details</a> |
+                <a class="data-btn delete-btn"asp-action="Delete" asp-route-id="@item.BookingId">Delete</a>
             </td>
         </tr>
 }

@@ -24,6 +24,12 @@ a {
   border-color: #1861ac;
 }
 
+/*data-manipulation button styling*/
+a.data-btn {
+    color: aquamarine;
+    box-shadow: 5px #ff0000;
+}
+
 /* Sticky footer styles
 -------------------------------------------------- */
 html {
@@ -60,7 +66,8 @@ html {
 
 body {
   /* Margin bottom by footer height */
-  margin-bottom: 60px;
+  margin-bottom: 58px;
+  background-color: aquamarine;
 }
 .footer {
   position: absolute;
