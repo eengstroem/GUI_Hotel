@@ -4,7 +4,7 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
+<h1>Bookings for today</h1>
 
 @*<p>
     <a asp-action="Create">Create New</a>
@@ -13,25 +13,39 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.BookingDate)
+                <strong>
+                    Booking Date
+                </strong>
+              
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.RoomNumber)
-            </th>
-
-            <th>
-                @Html.DisplayNameFor(model => model.AdultsCheckedIn)
-            </th>
-
-            <th>
-                @Html.DisplayNameFor(model => model.ChildrenCheckedIn)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.AdultsBooked)
+                <strong>
+                    Room No.
+                </strong>
+          
             </th>
 
             <th>
-                @Html.DisplayNameFor(model => model.ChildrenBooked)
+                <strong>
+                    Adults Checked in
+                </strong>
+            </th>
+
+            <th>
+                <strong>
+                    Children Checked in
+                </strong>
+            </th>
+            <th>
+                <strong>
+                    Adults booked
+                </strong>
+            </th>
+
+            <th>
+                <strong>
+                    Children booked
+                </strong>
             </th>
 
             <th></th>
@@ -62,9 +76,9 @@
             <td>
                 @Html.DisplayFor(modelItem => item.ChildrenBooked)
             </td>
-            <td>
-                <a class="data-btn btn btn-primary" asp-action="Edit" asp-route-id="@item.BookingId">Edit</a> |
-                <a class="data-btn btn btn-primary" asp-action="Details" asp-route-id="@item.BookingId">Details</a> |
+            <td  style="display:flex;">
+                <a class="data-btn btn btn-primary"  asp-action="Edit" asp-route-id="@item.BookingId">Edit</a> 
+                <a class="data-btn btn btn-primary" asp-action="Details" asp-route-id="@item.BookingId">Details</a>
                 <!--<a asp-action="Delete" asp-route-id="@item.BookingId">Delete</a>-->
             </td>
         </tr>

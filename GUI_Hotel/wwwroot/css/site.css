@@ -29,6 +29,7 @@ a.data-btn {
     box-shadow: 5px #ff0000;
     font-size: 1vw;
     display: inline-block;
+    display: flex;
 }
 
 /* Sticky footer styles
