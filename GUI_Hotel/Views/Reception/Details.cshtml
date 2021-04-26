@@ -1,10 +1,10 @@
 ﻿@model GUI_Hotel.Models.DataModels.Booking
 
 @{
-    ViewData["Title"] = "Details";
+    ViewData["Title"] = "Booking overview";
 }
 
-<h1>Details</h1>
+<h1>Overview</h1>
 
 <div>
     <h4>Booking</h4>
@@ -38,5 +38,5 @@
 </div>
 <div>
     <a asp-action="Edit" asp-route-id="@Model.BookingId">Edit</a> |
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Index">Back to menu</a>
 </div>

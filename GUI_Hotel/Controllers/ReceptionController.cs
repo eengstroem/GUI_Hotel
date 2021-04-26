@@ -94,7 +94,7 @@ namespace GUI_Hotel.Controllers
             {
                 _context.Add(booking);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction("Reservations", booking);
             }
             return View(booking);
         }
@@ -147,7 +147,7 @@ namespace GUI_Hotel.Controllers
                         throw;
                     }
                 }
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction("Reservations", booking);
             }
             return View(booking);
         }
@@ -180,7 +180,7 @@ namespace GUI_Hotel.Controllers
             var booking = await _context.Bookings.FindAsync(id);
             _context.Bookings.Remove(booking);
             await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
+            return RedirectToAction("Reservations", booking);
         }
 
         private bool BookingExists(int id)
