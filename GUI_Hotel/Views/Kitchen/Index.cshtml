@@ -1,65 +1,20 @@
-﻿@model IEnumerable<GUI_Hotel.Models.DataModels.Booking>
+﻿@model GUI_Hotel.Models.KitchenDateInputModel
 
-@{
-    ViewData["Title"] = "Index";
-}
-
-<h1>Index</h1>
-
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.BookingDate)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.RoomNumber)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.AdultsBooked)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.AdultsCheckedIn)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ChildrenBooked)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ChildrenCheckedIn)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.BookingDate)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.RoomNumber)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.AdultsBooked)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.AdultsCheckedIn)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ChildrenBooked)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ChildrenCheckedIn)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.BookingId">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.BookingId">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.BookingId">Delete</a>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
+@{ ViewData["Title"] = "Index"; }
+<div class="container mx-auto">
+    <div class="row">
+        <div class="col-sm" align="center">
+            <form asp-action="Find">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for="Date" class="control-label" ></label>
+                    <input asp-for="Date" class="form-control" />
+                    <span asp-validation-for="Date" class="text-danger" ></span>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Go" class="btn btn-primary" />
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
