@@ -8,23 +8,52 @@ using Microsoft.EntityFrameworkCore;
 using GUI_Hotel.Data;
 using GUI_Hotel.Models.DataModels;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.Extensions.Logging;
 
 namespace GUI_Hotel.Controllers
 {
     public class ReceptionController : Controller
     {
         private readonly ApplicationDbContext _context;
+        private readonly ILogger<HomeController> _logger;
 
-        public ReceptionController(ApplicationDbContext context)
+        public ReceptionController(ApplicationDbContext context, ILogger<HomeController> logger)
         {
             _context = context;
+            _logger = logger;
         }
 
         // GET: Reception
         [Authorize(Policy = "IsReception")]
-        public async Task<IActionResult> Index()
+        public IActionResult Index()
         {
-            return View(await _context.Bookings.ToListAsync());
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        [Authorize(Policy = "IsReception")]
+        public async Task<IActionResult> ReservationsForDate([Bind("BookingDate")] Booking booking)
+        {
+            if(booking.BookingDate == null)
+            {
+                _logger.LogWarning("null date");
+                return NotFound();
+            }
+            var bookings = await _context.Bookings.Where(b => b.BookingDate == booking.BookingDate).OrderBy(b => b.RoomNumber).ToListAsync();
+            
+            return View(bookings);
+        }
+
+        [Authorize(Policy = "IsReception")]
+        public async Task<IActionResult> Reservations([Bind("BookingDate")] Booking booking)
+        {
+            if (booking.BookingDate == null)
+            {
+                _logger.LogWarning("null date");
+                return NotFound();
+            }
+            return View(await _context.Bookings.Where(b => b.BookingDate == booking.BookingDate).OrderBy(b=>b.RoomNumber).ToListAsync());
         }
 
         // GET: Reception/Details/5
@@ -65,7 +94,7 @@ namespace GUI_Hotel.Controllers
             {
                 _context.Add(booking);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction("Reservations", booking);
             }
             return View(booking);
         }
@@ -118,7 +147,7 @@ namespace GUI_Hotel.Controllers
                         throw;
                     }
                 }
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction("Reservations", booking);
             }
             return View(booking);
         }
@@ -151,7 +180,7 @@ namespace GUI_Hotel.Controllers
             var booking = await _context.Bookings.FindAsync(id);
             _context.Bookings.Remove(booking);
             await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
+            return RedirectToAction("Reservations", booking);
         }
 
         private bool BookingExists(int id)

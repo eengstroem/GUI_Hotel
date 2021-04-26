@@ -1,0 +1,48 @@
+﻿@model IEnumerable<GUI_Hotel.Models.DataModels.Booking>
+
+@{
+    if (Model.Count() < 1)
+    {
+        <h1>There are no reservations for this date</h1>
+        <a asp-action="Index">Back to Reception page</a>
+    }
+    else
+    {
+        var date = Model.First().BookingDate.Value.ToShortDateString();
+        ViewData["Title"] = "Reservations on " + date;
+        <h1>Reservations on @date</h1>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.RoomNumber)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.AdultsCheckedIn)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.ChildrenCheckedIn)
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.RoomNumber)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.AdultsCheckedIn)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ChildrenCheckedIn)
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+}
+

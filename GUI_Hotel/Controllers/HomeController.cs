@@ -26,14 +26,13 @@ namespace GUI_Hotel.Controllers
 
         public IActionResult Index()
         {
-            return View();
+            return View(); 
         }
 
         public IActionResult Privacy()
         {
             return View();
         }
-        [Authorize(Policy = "IsKitchen")]
 
         public IActionResult Kitchen()
         {
