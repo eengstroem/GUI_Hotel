@@ -56,39 +56,7 @@ namespace GUI_Hotel.Controllers
             return View();
         }
 
-        // POST: Restaurant/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        [Authorize(Policy = "IsRestaurant")]
-        public async Task<IActionResult> Create([Bind("BookingId,BookingDate,RoomNumber,AdultsBooked,AdultsCheckedIn,ChildrenBooked,ChildrenCheckedIn")] Booking booking)
-        {
-            if (ModelState.IsValid)
-            {
-                _context.Add(booking);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
-            }
-            return View(booking);
-        }
-
-        // GET: Restaurant/Edit/5
-        [Authorize(Policy = "IsRestaurant")]
-        public async Task<IActionResult> Edit(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var booking = await _context.Bookings.FindAsync(id);
-            if (booking == null)
-            {
-                return NotFound();
-            }
-            return View(booking);
-        }
+      
 
         // POST: Restaurant/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
