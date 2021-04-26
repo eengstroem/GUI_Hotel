@@ -9,7 +9,7 @@
 @*<p>
     <a asp-action="Create">Create New</a>
 </p>*@
-<table class="table">
+<table class="table"  style="font-size:1.5vw">
     <thead>
         <tr>
             <th>
@@ -63,8 +63,8 @@
                 @Html.DisplayFor(modelItem => item.ChildrenBooked)
             </td>
             <td>
-                <a class="data-btn" asp-action="Edit" asp-route-id="@item.BookingId">Edit</a> |
-                <a class="data-btn" asp-action="Details" asp-route-id="@item.BookingId">Details</a> |
+                <a class="data-btn btn btn-primary" asp-action="Edit" asp-route-id="@item.BookingId">Edit</a> |
+                <a class="data-btn btn btn-primary" asp-action="Details" asp-route-id="@item.BookingId">Details</a> |
                 <!--<a asp-action="Delete" asp-route-id="@item.BookingId">Delete</a>-->
             </td>
         </tr>
