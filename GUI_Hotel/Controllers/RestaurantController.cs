@@ -72,6 +72,47 @@ namespace GUI_Hotel.Controllers
             return View(booking);
         }
 
+
+        // POST: Restaurant/Edit/5
+        // To protect from overposting attacks, enable the specific properties you want to bind to.
+        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        [Authorize(Policy = "IsRestaurant")]
+        public async Task<IActionResult> Edit(int id, [Bind("BookingId,BookingDate,RoomNumber,AdultsCheckedIn,ChildrenCheckedIn")] Booking booking)
+        {
+            if (id != booking.BookingId)
+            {
+                return NotFound();
+            }
+
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    var Booking = await _context.Bookings.FindAsync(id);
+
+                    Booking.AdultsCheckedIn = booking.AdultsCheckedIn;
+                    Booking.ChildrenCheckedIn = booking.ChildrenCheckedIn;
+
+                    await _context.SaveChangesAsync();
+                }
+                catch (DbUpdateConcurrencyException)
+                {
+                    if (!BookingExists(booking.BookingId))
+                    {
+                        return NotFound();
+                    }
+                    else
+                    {
+                        throw;
+                    }
+                }
+                return RedirectToAction(nameof(Index));
+            }
+            return View(booking);
+        }
+
         // GET: Restaurant/Delete/5
         [Authorize(Policy = "IsRestaurant")]
         public async Task<IActionResult> Delete(int? id)
